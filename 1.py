@@ -9,6 +9,8 @@ max_stock_result = None
 max_fluctuation = 0
 BJ=os.listdir("BJ")
 BJ.remove('bj873693.csv')
+BJ.remove('bj920002.csv')
+
 print(BJ)
 
 for x in BJ:
