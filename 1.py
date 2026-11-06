@@ -1,18 +1,16 @@
 import os
 import pandas as pd
-
+from numba.cuda.printimpl import print_item
 
 # print(len(os.listdir("BJ")))
 
 numbers = []
-max_stock_result = None
-max_fluctuation = 0
 BJ=os.listdir("BJ")
 BJ.remove('bj873693.csv')
 BJ.remove('bj920002.csv')
 
 
-print(BJ)
+
 
 
     # print(len(df))
@@ -30,26 +28,43 @@ print(BJ)
 # print(max(numbers))
 #     开盘价，涨跌幅，振幅, 量比
 
-print("单日波动最大的股票是:")
-print(max_stock_result)
+# print("单日波动最大的股票是:")
+# print(max_stock_result)
 
 # 'bj873693.csv'
 
 
-a=[]
+# a=[]
+# # a=["bj...csv"]
+# bj = [1,2,3,4,5,6,7,3] # 被减数
+# a = [2,3] # 减数
+# # c = bj - a
+# c = [] # 结果
+# for x in bj:
+#     if x not in a:
+#         c.append(x)
+# # c is bj - a de jieguo
+# 
+# 
+# 
+# print(c)
+
 def find_max(a):
-    c=[]
+    max_stock_result = None
     max_fluctuation = 0
-    BJ=os.listdir("BJ")
-    print(BJ)
-    # a=BJ-a
-    for b in BJ:
+    c=[]
+    BJ目录下所有的文件名 = os.listdir("BJ")
+    # print(BJ)
+    # c=BJ-a
+    for b in BJ目录下所有的文件名:
         if b not in a:
             c.append(b)
 
-    print(c)
+
+    # print()
     for x in c:
         # print(x)
+        # file_path is *****
         file_path = os.path.join("BJ", x)
         df = pd.read_csv(file_path, encoding="gbk")
         result_df = df[['交易日期', '股票代码', '开盘价', '涨跌幅', '振幅', '量比', '收盘价']]
@@ -65,6 +80,30 @@ def find_max(a):
         if result['涨跌额度'] > max_fluctuation:
             max_fluctuation = result['涨跌额度']
             max_stock_result = result
+    # (type(max_stock_result))
+    # (max_stock_result)
+    stock=max_stock_result['股票代码']
+    # i am:bj873693
+    # i can: f'AAA{变量}AAAA'
+    # i want:["bj...csv"]
+    # stock + '.csv' =  f'{stock}.csv'
+    a.append(f'{stock}.csv')
+    # print(a)
+    return a
+a = []
+print(a)
+a = find_max(a)
+print(a)
+a = find_max(a)
+print(a)
+a = find_max(a)
+print(a)
+a = find_max(a)
+print(a)
+a = find_max(a)
+print(a)
+a = find_max(a)
+print(a)
 
 
 
